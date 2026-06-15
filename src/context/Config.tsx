@@ -2,19 +2,17 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 import { loadCallbacks } from '@utils/performScript';
 
-// TODO: Replace example
-const defaultConfig: Partial<Example.Config> = {
+const defaultConfig: Partial<TextViewer.Config> = {
     value: 'example',
 };
-
 
 // Parses the JSON from FileMaker into a readable config
 const parseConfig = (cfg: string = '{}') => {
     try {
-        const config = JSON.parse(cfg) as Example.Config;
+        const config = JSON.parse(cfg) as TextViewer.Config;
 
         Object.keys(defaultConfig).forEach((key) => {
-            (config as RSAny)[key] ??= defaultConfig[key as keyof Example.Config];
+            (config as RSAny)[key] ??= defaultConfig[key as keyof TextViewer.Config];
         });
 
         return config;
@@ -39,10 +37,9 @@ window.init = cfg => {
     runLoadCallbacks();
 };
 
-// TODO: Replace example
-const ConfigContext = createContext<State<Example.Config|null>>([null, () => {}]);
+const ConfigContext = createContext<State<TextViewer.Config|null>>([null, () => {}]);
 const ConfigProvider: FC = ({ children }) => {
-    const [config, setConfig] = useState<Example.Config|null>(null);
+    const [config, setConfig] = useState<TextViewer.Config|null>(null);
 
     useEffect(() => {
         if (window._config !== undefined) setConfig(window._config);

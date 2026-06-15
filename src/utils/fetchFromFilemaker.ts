@@ -19,19 +19,18 @@ window.onScriptResult = (uuid, data) => {
     promises.delete(uuid);
 }
 
-// TODO: Replace example (three places)
 /**
  * Asynchronously waits for FileMaker to send a response to JS
- * @param scriptKey The key of the script as per `Example.Config`
+ * @param scriptKey The key of the script as per `TextViewer.Config`
  * @example
  * ```ts
- * fetchFromFileMaker('getContacts', { FirstName: 'Joakim' }).then(contacts => {
+ * fetchFromFileMaker('getContacts', { FirstName: 'Vetle' }).then(contacts => {
  *     console.log(contacts);
  * });
  * ```
  */
 export default async function fetchFromFileMaker<T = RSAny>(
-    scriptKey: (string & keyof Example.Config['scriptNames']) | (string & {}),
+    scriptKey: (string & keyof TextViewer.Config['scriptNames']) | (string & {}),
     param?: any,
     option?: Parameters<typeof window['FileMaker']['PerformScriptWithOption']>[2],
     directScriptName: boolean = false,
@@ -54,7 +53,7 @@ export default async function fetchFromFileMaker<T = RSAny>(
     }
 
     // Get the script name
-    const scriptName = directScriptName? scriptKey: window._config!.scriptNames?.[scriptKey as keyof Example.ScriptNames];
+    const scriptName = directScriptName? scriptKey: window._config!.scriptNames?.[scriptKey as keyof TextViewer.ScriptNames];
     if (typeof scriptName !== 'string') {
         if (directScriptName && !scriptName) {
             warn('No direct scriptname was passed');
