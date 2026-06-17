@@ -1,7 +1,8 @@
 declare global {
     namespace TextViewer {
         interface Config {
-            value: string;
+            
+            listItems: any[];
 
             scriptNames: TextViewer.ScriptNames;
             

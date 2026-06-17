@@ -3,7 +3,15 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { loadCallbacks } from '@utils/performScript';
 
 const defaultConfig: Partial<TextViewer.Config> = {
-    value: 'example',
+    listItems: [
+        "adsf",
+        "adsf",
+        "adsf",
+        "adsf",
+        "adsf",
+        "adsf",
+        "adsf",
+    ]
 };
 
 // Parses the JSON from FileMaker into a readable config
