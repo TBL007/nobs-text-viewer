@@ -12,6 +12,7 @@ const Search: FC<SearchProps> = ({ setFilteredItems }) => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
+        
         const parsedsearch = search.toLowerCase();
         console.log(config?.searchkeys)
         setFilteredItems(
@@ -20,11 +21,11 @@ const Search: FC<SearchProps> = ({ setFilteredItems }) => {
                     return item.includes(parsedsearch);
                 } else if (typeof item === 'object') {
                     if (!config?.searchkeys) return 
-                    const keysToSearch = Array.isArray(config?.searchkeys && config.searchkeys.length !== 0)
+                    const keysToSearch = Array.isArray(config?.searchkeys ) && config.searchkeys.length !== 0
                         ? config?.searchkeys
                         : Object.keys(item);
                     return keysToSearch.some((key) => {
-                      
+                        
                         // Sjekk at nøkkelen faktisk eksisterer på objektet før vi leser verdien
                         if (item[key] !== undefined && item[key] !== null) {
                             return String(item[key]).toLowerCase().includes(parsedsearch);

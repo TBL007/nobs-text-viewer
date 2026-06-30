@@ -30,7 +30,7 @@ const defaultConfig: Partial<TextViewer.Config> = {
         },
       
     ],
-    searchkeys:[],
+    searchkeys:["title"],
 };
 
 // Parses the JSON from FileMaker into a readable config
