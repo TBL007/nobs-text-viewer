@@ -14,6 +14,7 @@ declare global {
 
             /** The key of the value to display, E.G "FirstName". Supports lodash.get syntax such as "NestedObject.FirstName" or "NestedArray[0]" */
             value?: string;
+           
 
             /** Optional HTML template. Will be prioritized over "template" and "value" */
             htmlTemplate?: string;
@@ -32,7 +33,7 @@ declare global {
              * ```
              */
             template?: string;
-
+          
             /**
              * Optional JS function to return a value. Will be prioritized over 'template' and 'value'
              *

@@ -5,6 +5,8 @@ import { loadCallbacks } from '@utils/performScript';
 const defaultConfig: Partial<TextViewer.Config> = {
     listItems: ['adsf', 'adsf', 'adsf', 'adsf', 'adsf', 'adsf', 'adsf'],
     defaultListItemComponent: 'default',
+
+    // set each field  with a template or value with key
     listItemComponents: [
         {
             name: 'default',
@@ -13,11 +15,22 @@ const defaultConfig: Partial<TextViewer.Config> = {
                     value: 'title',
                 },
                 {
-                    template: 'test {value}',
+                    template: 'Desc: {value}',
                 },
+                {
+                    template: "Id: {id}"
+                },
+                {
+                    value:"account"
+                },
+                {
+                    value:"name"
+                }
             ],
         },
+      
     ],
+    searchkeys:[],
 };
 
 // Parses the JSON from FileMaker into a readable config

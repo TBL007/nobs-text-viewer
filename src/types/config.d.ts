@@ -16,6 +16,7 @@ declare global {
             // should be kept, or remove from log file.
             ignoreInfo: boolean;
             ignoreWarnings: boolean;
+            searchkeys: string[]
         }
     }
 
