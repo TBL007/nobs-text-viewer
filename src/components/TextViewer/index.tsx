@@ -10,11 +10,11 @@ const TextViewer: FC = () => {
 
     return (
         <div>
-            <Search filteredItems={filteredItems} setFilteredItems={setFilteredItems} />
+            <Search setFilteredItems={setFilteredItems} />
             {filteredItems.length > 0 ? (
-                filteredItems.map((item, index) => (
+                filteredItems.map((item: TextViewer.ListItem, index) => (
                     <div key={index}>
-                        <ListItem item={item} />
+                        <ListItem {...item} />
                     </div>
                 ))
             ) : (

@@ -3,15 +3,21 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { loadCallbacks } from '@utils/performScript';
 
 const defaultConfig: Partial<TextViewer.Config> = {
-    listItems: [
-        "adsf",
-        "adsf",
-        "adsf",
-        "adsf",
-        "adsf",
-        "adsf",
-        "adsf",
-    ]
+    listItems: ['adsf', 'adsf', 'adsf', 'adsf', 'adsf', 'adsf', 'adsf'],
+    defaultListItemComponent: 'default',
+    listItemComponents: [
+        {
+            name: 'default',
+            fields: [
+                {
+                    value: 'title',
+                },
+                {
+                    template: 'test {value}',
+                },
+            ],
+        },
+    ],
 };
 
 // Parses the JSON from FileMaker into a readable config
@@ -24,20 +30,22 @@ const parseConfig = (cfg: string = '{}') => {
         });
 
         return config;
-    } catch(err) {
+    } catch (err) {
         console.error(err);
     }
-}
+};
 
 // Runs any script that was attempted called before the config was loaded
-const runLoadCallbacks = () => loadCallbacks.length && loadCallbacks.forEach(cb => {
-    cb();
-    loadCallbacks.splice(loadCallbacks.indexOf(cb), 1);
-});
+const runLoadCallbacks = () =>
+    loadCallbacks.length &&
+    loadCallbacks.forEach((cb) => {
+        cb();
+        loadCallbacks.splice(loadCallbacks.indexOf(cb), 1);
+    });
 
 // FileMaker may call init before useEffect can assign the function
 // This acts as a failsafe
-window.init = cfg => {
+window.init = (cfg) => {
     const parsedConfig = parseConfig(cfg);
     if (!parsedConfig) return;
 
@@ -45,14 +53,14 @@ window.init = cfg => {
     runLoadCallbacks();
 };
 
-const ConfigContext = createContext<State<TextViewer.Config|null>>([null, () => {}]);
+const ConfigContext = createContext<State<TextViewer.Config | null>>([null, () => {}]);
 const ConfigProvider: FC = ({ children }) => {
-    const [config, setConfig] = useState<TextViewer.Config|null>(null);
+    const [config, setConfig] = useState<TextViewer.Config | null>(null);
 
     useEffect(() => {
         if (window._config !== undefined) setConfig(window._config);
 
-        window.init = cfg => {
+        window.init = (cfg) => {
             const parsedConfig = parseConfig(cfg);
             if (!parsedConfig) return;
 
@@ -60,7 +68,7 @@ const ConfigProvider: FC = ({ children }) => {
             setConfig(parsedConfig);
 
             runLoadCallbacks();
-        }
+        };
     }, []);
 
     // Update window._config upon change
@@ -69,19 +77,17 @@ const ConfigProvider: FC = ({ children }) => {
     }, [config]);
 
     //if (!config) return null;
-    return <ConfigContext.Provider value={[config, setConfig]}>
-        {children}
-    </ConfigContext.Provider>
-}
+    return <ConfigContext.Provider value={[config, setConfig]}>{children}</ConfigContext.Provider>;
+};
 
 export const useConfig = () => {
     const [config] = useContext(ConfigContext);
     return config;
-}
+};
 
 export const useConfigState = () => {
     const ctx = useContext(ConfigContext);
     return ctx;
-}
+};
 
 export default ConfigProvider;

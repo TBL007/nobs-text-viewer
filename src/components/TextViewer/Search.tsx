@@ -2,18 +2,17 @@ import { useConfig } from '@context/Config';
 import { useEffect, useState } from 'react';
 
 interface SearchProps {
-    filteredItems: any[];
     setFilteredItems: (items: any[]) => void;
 }
 
-const Search: FC<SearchProps> = ({ filteredItems, setFilteredItems }) => {
+const Search: FC<SearchProps> = ({ setFilteredItems }) => {
     const config = useConfig();
 
     const [search, setSearch] = useState('');
 
     useEffect(() => {
         setFilteredItems(
-            filteredItems.filter((item) => {
+            (config?.listItems || []).filter((item) => {
                 if (typeof item === 'string') {
                     return item.includes(search);
                 } else return true;

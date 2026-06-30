@@ -1,5 +1,5 @@
 {
-    "name": "TextViewer",
+    "name": "Text_Viewer",
     "server": "devmaster.codeo.no",
     "file": "NOBS_GUI",
     "uploadScript": "UploadHTML"
