@@ -16,7 +16,13 @@ declare global {
             // should be kept, or remove from log file.
             ignoreInfo: boolean;
             ignoreWarnings: boolean;
-            searchkeys: string[]
+            searchkeys: string[];
+            searchField: {
+                instant: boolean,
+                placeHolder: string,
+                emptyButton:boolean,
+                value:string,
+            }
         }
     }
 

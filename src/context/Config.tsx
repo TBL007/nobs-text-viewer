@@ -31,6 +31,12 @@ const defaultConfig: Partial<TextViewer.Config> = {
       
     ],
     searchkeys:["title"],
+      searchField: {
+                instant: true,   // if searching is instant
+                placeHolder: "Search", // Search bar placeholder
+                emptyButton:true,
+                value:"hei" // default search
+            } 
 };
 
 // Parses the JSON from FileMaker into a readable config

@@ -1,0 +1,27 @@
+.search-field {
+        display: flex;
+        gap: 4px;
+
+        input {
+            width: 20%;
+            padding: 4px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, .3);
+        }
+
+        svg {
+            display: inline-block;
+            stroke-width: .145em;
+            width: 18px;
+            height: 18px;
+            padding: 4px;
+            border-radius: 9999px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            
+            &:hover {
+                cursor: pointer;
+                background-color: var(--button-hover);
+            }
+        }
+    }
