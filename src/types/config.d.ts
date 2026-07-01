@@ -7,7 +7,15 @@ declare global {
                 name: string;
                 html: string;
             }[];
+              filters?: {
+                // The list of items to filter on.
+                
+                filterItems: FilterItem[];
+                // The key of the list item to filter on.
+                listItemKey: string;
 
+                all:string;
+            };
             defaultListItemComponent?: string;
             listItemComponents: ListItemComponent[];
 
@@ -30,6 +38,13 @@ declare global {
     interface Window {
         _config?: TextViewer.Config;
     }
+    interface FilterItem {
+                    name:string,
+                    value:string
+                }
 }
 
 export {};
+
+
+

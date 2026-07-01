@@ -7,6 +7,24 @@ const defaultConfig: Partial<TextViewer.Config> = {
     defaultListItemComponent: 'default',
 
     // set each field  with a template or value with key
+    filters: {
+        // The list of items to filter on.
+        filterItems: [
+            {
+                name: 'Medisinsk',
+                value: 'Medisinsk',
+            },
+            {
+                name:"Bilde",
+                value:"Bilde"
+            }
+        ],
+
+        // The key of the list item to filter on.
+        listItemKey: 'value',
+
+        all: 'Alle', // Which tag counts as All / no filter
+    },
     listItemComponents: [
         {
             name: 'default',
@@ -18,25 +36,24 @@ const defaultConfig: Partial<TextViewer.Config> = {
                     template: 'Desc: {value}',
                 },
                 {
-                    template: "Id: {id}"
+                    template: 'Id: {id}',
                 },
                 {
-                    value:"account"
+                    value: 'account',
                 },
                 {
-                    value:"name"
-                }
+                    value: 'name',
+                },
             ],
         },
-      
     ],
-    searchkeys:["title"],
-      searchField: {
-                instant: true,   // if searching is instant
-                placeHolder: "Search", // Search bar placeholder
-                emptyButton:true,
-                value:"hei" // default search
-            } 
+    searchkeys: ['title'],
+    searchField: {
+        instant: true, // if searching is instant
+        placeHolder: 'Search', // Search bar placeholder
+        emptyButton: true,
+        value: '', // default search
+    },
 };
 
 // Parses the JSON from FileMaker into a readable config
