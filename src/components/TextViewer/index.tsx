@@ -13,9 +13,7 @@ const TextViewer: FC = () => {
             <Search setFilteredItems={setFilteredItems} />
             {filteredItems.length > 0 ? (
                 filteredItems.map((item: TextViewer.ListItem, index) => (
-                    <div key={index}>
-                        <ListItem {...item} />
-                    </div>
+                    <ListItem key={index} {...item} />
                 ))
             ) : (
                 <p>Ingen resultater.</p>

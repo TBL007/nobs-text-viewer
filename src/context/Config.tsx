@@ -10,6 +10,34 @@ const defaultConfig: Partial<TextViewer.Config> = {
             name: 'default',
             fields: [
                 {
+                    value: 'documentSakType',
+                    textStyle: {
+                        boldness: '700',
+                    },
+                },
+                {
+                    value: 'creationTimeStamp',
+                },
+                {
+                    value: 'creationAccountName',
+                },
+                {
+                    lineBreakStart: true,
+                    value: 'documentSubType',
+                    textStyle: {
+                        boldness: '700',
+                    },
+                },
+                {
+                    lineBreakStart: true,
+                    value: 'content',
+                },
+            ],
+        },
+        {
+            name: 'admin',
+            fields: [
+                {
                     value: 'title',
                 },
                 {

@@ -4,6 +4,7 @@ import { warn } from '@utils/log';
 import searchObject from '@utils/searchObject';
 import { useMemo } from 'react';
 import Field from './Field';
+import ChevronLeft from 'jsx:@svg/chevron-left.svg';
 
 const ListItem: FC<TextViewer.ListItem> = ({ ...props }) => {
     const config = useConfig()!;
@@ -63,10 +64,13 @@ const ListItem: FC<TextViewer.ListItem> = ({ ...props }) => {
     }
 
     return (
-        <div style={style} className="list-item">
-            {component.fields?.map((field, i) => (
-                <Field key={i} listItem={props} {...field} />
-            ))}
+        <div className="list-item-wrapper">
+            <div style={style} className="list-item">
+                {component.fields?.map((field, i) => (
+                    <Field key={i} listItem={props} {...field} />
+                ))}
+            </div>
+            <ChevronLeft className="list-item-chevron" />
         </div>
     );
 };

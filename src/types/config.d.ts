@@ -8,6 +8,14 @@ declare global {
                 html: string;
             }[];
 
+            filters?: {
+                // The list of items to filter on.
+                filterItems: string[];
+
+                // The key of the list item to filter on.
+                listItemKey: string;
+            };
+
             defaultListItemComponent?: string;
             listItemComponents: ListItemComponent[];
 
